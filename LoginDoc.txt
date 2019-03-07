@@ -1,0 +1,35 @@
+http://127.0.0.1:5000/foresite/login
+login() - use when logging a user in
+
+Sample input:
+{
+    "user_name": "ctarng",
+    "password": "tempPassword"
+}
+
+Output:
+{
+    "message": "Authentication successful",
+    "response": "success"
+}
+
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+http://127.0.0.1:5000/foresite/createUser
+createUser() - use when creating a new user
+Sample input:
+{
+    "first_name": "Cassidy",
+    "last_name": "Tarng",
+    "email": "ctarng@scu.edu",
+    "phone_number": "5106762337",
+    "user_name": "ctarng2",
+    "password": "ctarngPassword"
+}
+
+Output:
+{
+    "message": "User ctarng2 has been inserted",
+    "response": "success"
+}
