@@ -1,7 +1,9 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS, cross_origin
 import pymongo
 
 app = Flask(__name__)
+CORS(app)
 
 #client = pymongo.MongoClient("mongodb://admin:foresiteadmin@54.218.76.138/foresite")  # defaults to port 27017
 client = pymongo.MongoClient("mongodb://localhost:27017/")
