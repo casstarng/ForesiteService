@@ -1,0 +1,29 @@
+http://127.0.0.1:5000/foresite/getEventList
+getEventList() - use when getting first 10 events
+
+Sample input:
+{}
+
+Output:
+{
+    "message": "Query Success",
+    "response": "success",
+    "results": "[{'_id': ObjectId('5c81888789977a2ed87e1d08'), 'event_id': 'E001', 'thumbnail_icon': 'icon placeholder', 'title': 'Santa Clara Tech Conference', 'street': '5001 Great America Pkwy', 'city': 'Santa Clara', 'state': 'CA', 'zip_code': '95054', 'start_time': '13:00', 'end_time': '20:00', 'is_tbd': 0, 'category': 'Technology', 'description': 'The Santa Clara Tech COnference is a tech conference that....', 'max_purchase_quantity': 4, 'max_quantity_available': 500, 'subtotal_price': 4500, 'add_ons': {}, 'survey_questions': {'survey': [{'question': 'Male or Female', 'answers': ['M', 'F']}]}, 'event_tickets': ['T123'], 'creation_date': '2019-02-20 01:16:21', 'last_updated': '2019-02-20 01:16:21'}]"
+}
+
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+http://127.0.0.1:5000/foresite/getEventDetails
+getEventDetails() - use when getting full event details
+Sample input:
+{
+    "event_id":"E001"
+}
+
+Output:
+{
+    "message": "Query Success",
+    "response": "success",
+    "results": "{'_id': ObjectId('5c81888789977a2ed87e1d08'), 'event_id': 'E001', 'thumbnail_icon': 'icon placeholder', 'title': 'Santa Clara Tech Conference', 'street': '5001 Great America Pkwy', 'city': 'Santa Clara', 'state': 'CA', 'zip_code': '95054', 'start_time': '13:00', 'end_time': '20:00', 'is_tbd': 0, 'category': 'Technology', 'description': 'The Santa Clara Tech COnference is a tech conference that....', 'max_purchase_quantity': 4, 'max_quantity_available': 500, 'subtotal_price': 4500, 'add_ons': {}, 'survey_questions': {'survey': [{'question': 'Male or Female', 'answers': ['M', 'F']}]}, 'event_tickets': ['T123'], 'creation_date': '2019-02-20 01:16:21', 'last_updated': '2019-02-20 01:16:21'}"
+}
