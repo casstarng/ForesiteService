@@ -36,6 +36,7 @@ print('1 User has been created')
 # Insert event
 query = {
     'event_id': 'E001',
+    'user_id': 'U123',
     'thumbnail_icon': 'icon placeholder',
     'title': 'Santa Clara Tech Conference',
     'street': '5001 Great America Pkwy',
