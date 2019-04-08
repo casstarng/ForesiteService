@@ -19,6 +19,10 @@ def getEventList():
 
     results = list(cursor)
 
+    # Converts ObjectId to string
+    for r in results:
+        r['_id'] = str(r['_id'])
+
     return jsonify({'response': 'success',
                     'message': 'Query Success',
                     'results': str(results)}), 201
@@ -36,6 +40,10 @@ def getEventDetails():
     # Find with query
     cursor = db.event.find(query)
     results = list(cursor)
+    
+    # Converts ObjectId to string
+    for r in results:
+        r['_id'] = str(r['_id'])
 
     if (len(results) == 1):
         return jsonify({'response': 'success',
