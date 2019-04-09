@@ -19,13 +19,30 @@ def getEventList():
 
     results = list(cursor)
 
+    final_res = []
+
     # Converts ObjectId to string
     for r in results:
-        r['_id'] = str(r['_id'])
+        tempobj = {
+            '_id':  str(r['_id']),
+            'event_id': r['event_id'],
+            'thumbnail_icon': r['thumbnail_icon'],
+            'title': r['title'],
+            'street': r['street'],
+            'city': r['city'],
+            'state': r['state'],
+            'zip_code': r['zip_code'],
+            'start_time': r['start_time'],
+            'end_time': r['end_time'],
+            'is_tbd': r['is_tbd'],
+            'subtotal_price': r['subtotal_price'],
+            'add_ons': r['add_ons']
+        }
+        final_res.append(tempobj)
 
     return jsonify({'response': 'success',
                     'message': 'Query Success',
-                    'results': str(results)}), 201
+                    'results': str(final_res)}), 201
 
 @bp.route('/foresite/getEventDetails', methods=['POST'])
 def getEventDetails():
