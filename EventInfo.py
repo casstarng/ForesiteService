@@ -44,7 +44,7 @@ def getEventList():
 
     return jsonify({'response': 'success',
                     'message': 'Query Success',
-                    'results': str(final_res)}), 201
+                    'results': final_res}), 201
 
 @bp.route('/foresite/getEventDetails', methods=['POST'])
 def getEventDetails():
@@ -67,7 +67,7 @@ def getEventDetails():
     if (len(results) == 1):
         return jsonify({'response': 'success',
                         'message': 'Query Success',
-                        'results': str(results[0])}), 201
+                        'results': results[0]}), 201
     else:
         return jsonify({'response': 'fail',
                         'message': 'Event ID does not exist'}), 201
