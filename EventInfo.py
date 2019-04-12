@@ -34,6 +34,8 @@ def getEventList():
             'zip_code': r['zip_code'],
             'start_time': r['start_time'],
             'end_time': r['end_time'],
+            'start_date': r['start_date'],
+            'end_date': r['end_date'],
             'is_tbd': r['is_tbd'],
             'subtotal_price': r['subtotal_price'],
             'add_ons': r['add_ons']
