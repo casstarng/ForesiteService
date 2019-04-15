@@ -35,7 +35,7 @@ print('1 User has been created')
 
 # Insert event
 query = {
-    'event_id': 'E001',
+    'event_id': 'TEMP',
     'user_id': 'U123',
     'thumbnail_icon': 'https://res.cloudinary.com/dz0okos1w/image/upload/v1555275330/Santa_Clara_U_Seal.svg.png',
     'title': 'Santa Clara Tech Conference',
@@ -61,6 +61,13 @@ query = {
 }
 
 db.event.insert_one(query)
+
+results = db.event.find({'event_id': 'TEMP'})
+
+for r in results:
+    r['event_id'] = str(r['_id'])
+    db.event.update({'event_id': 'TEMP'}, r)
+
 print('1 Event has been created')
 
 # Insert event_ticket

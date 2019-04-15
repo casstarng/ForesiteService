@@ -80,7 +80,7 @@ def createEvent():
                         'message': 'user_id not present'}), 201
 
     query = {
-        'event_id': request.json['event_id'] if 'event_id' in request.json else '', #TODO
+        'event_id': request.json['event_id'] if 'event_id' in request.json else 'TEMP',
         'user_id': request.json['user_id'] if 'user_id' in request.json else '',
         'thumbnail_icon': request.json['thumbnail_icon'] if 'thumbnail_icon' in request.json else '',
         'title': request.json['title'] if 'title' in request.json else '',
@@ -108,6 +108,15 @@ def createEvent():
 
     db.event.insert_one(query)
 
+    results = db.event.find({'event_id': 'TEMP'})
+
+    new_id = ''
+
+    for r in results:
+        r['event_id'] = str(r['_id'])
+        new_id = r['event_id']
+        db.event.update({'event_id': 'TEMP'}, r)
+
     return jsonify({'response': 'success',
                     'message': 'Query Success',
-                    'event_id': request.json['event_id']}), 201
+                    'event_id': new_id}), 201
