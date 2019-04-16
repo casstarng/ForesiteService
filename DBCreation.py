@@ -8,7 +8,7 @@ cursor = db.user.find()
 # This exits if there already exists a user in the collection.
 # This will prevent you from creating duplicate users if you run this script multiple times
 if len(list(cursor)) > 0:
-    exit()
+    client.drop_database('foresite')
 
 for doc in cursor:
     print(doc)
