@@ -75,13 +75,13 @@ def getEventDetails():
 @bp.route('/foresite/createEvent', methods=['POST'])
 def createEvent():
     # Check if user
-    if not request.json or not 'user_id' in request.json:
+    if not request.json or not 'user_name' in request.json:
         return jsonify({'response': 'fail',
                         'message': 'user_id not present'}), 201
 
     query = {
         'event_id': request.json['event_id'] if 'event_id' in request.json else 'TEMP',
-        'user_id': request.json['user_id'] if 'user_id' in request.json else '',
+        'user_name': request.json['user_name'] if 'user_name' in request.json else '',
         'thumbnail_icon': request.json['thumbnail_icon'] if 'thumbnail_icon' in request.json else '',
         'title': request.json['title'] if 'title' in request.json else '',
         'street': request.json['street'] if 'street' in request.json else '',
@@ -108,15 +108,65 @@ def createEvent():
 
     db.event.insert_one(query)
 
-    results = db.event.find({'event_id': 'TEMP'})
+    result = db.event.find_one({'event_id': 'TEMP'})
 
-    new_id = ''
-
-    for r in results:
-        r['event_id'] = str(r['_id'])
-        new_id = r['event_id']
-        db.event.update({'event_id': 'TEMP'}, r)
+    new_id = str(result['_id'])
+    db.event.update({'event_id': 'TEMP'}, {'$set': {'event_id': str(result['_id'])}})
 
     return jsonify({'response': 'success',
                     'message': 'Query Success',
                     'event_id': new_id}), 201
+
+
+@bp.route('/foresite/signUp', methods=['POST'])
+def signUp():
+    # Check if event_id present in request
+    if not request.json or not 'event_id' in request.json or not 'user_name' in request.json:
+        return jsonify({'response': 'fail',
+                        'message': 'event_id or user_name not present'}), 201
+
+    # Create new Ticket
+    query = {
+        'ticket_id': request.json['ticket_id'] if 'ticket_id' in request.json else 'TEMP',
+        'user_name': request.json['user_name'] if 'user_name' in request.json else '',
+        'event_id': request.json['event_id'],
+        'qr_code': request.json['qr_code'] if 'qr_code' in request.json else 'QR Code placeholder',
+        'is_ticket_redeemed': 0,
+        'add_ons': request.json['add_ons'] if 'add_ons' in request.json else {},
+        'survey_questions': request.json['survey_questions'] if 'survey_questions' in request.json else {},
+        'creation_date': datetime.datetime.now()
+    }
+
+    db.ticket.insert_one(query)
+    ticket = db.ticket.find_one({'ticket_id': 'TEMP'})
+    ticket_id = str(ticket['_id'])
+    db.ticket.update({'ticket_id': 'TEMP'}, {'$set': {'ticket_id': str(ticket['_id'])}})
+
+    # Add onto user event_tickets
+    query = {
+        'user_name': request.json['user_name']
+    }
+
+    user = db.user.find_one(query)
+    event_tickets = user['event_tickets']
+    event_tickets.append(ticket_id)
+
+    db.user.update({'user_name': request.json['user_name']}, {'$set': {'event_tickets': event_tickets}})
+
+    # Add onto event
+    query = {
+        'event_id': request.json['event_id']
+    }
+
+    event = db.event.find_one(query)
+    event_tickets = event['event_tickets']
+    event_tickets.append(ticket_id)
+
+    db.event.update({'event_id': request.json['event_id']}, {'$set': {'event_tickets': event_tickets}})
+
+
+    return jsonify({'response': 'success',
+                    'message': 'Sign Up Success',
+                    'ticket_id': ticket_id}
+                   ), 201
+

@@ -26,7 +26,7 @@ query = {
     'events_published': [''],
     'events_registered': ['E001'],
     'event_tickets': ['T123'],
-    'creation_date': 'T123',
+    'creation_date': '2019-02-20 01:16:21',
     'password': 'tempPassword'
 }
 
@@ -72,7 +72,7 @@ print('1 Event has been created')
 
 # Insert event_ticket
 query = {
-    'order_id': 'T123',
+    'ticket_id': 'T123',
     'user_name': 'ctarng',
     'user_id': 'U123',
     'event_id': 'E001',
@@ -83,7 +83,7 @@ query = {
     'creation_date': '2019-02-20 01:16:21'
 }
 
-db.event_ticket.insert_one(query)
+db.ticket.insert_one(query)
 print('1 Event Ticket has been created')
 
 print('Everything has been created successfully')
