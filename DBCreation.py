@@ -53,8 +53,10 @@ query = {
     'max_purchase_quantity': 4,
     'max_quantity_available': 500,
     'subtotal_price': 4500,
-    'add_ons': {},
-    'survey_questions': {'survey': [{'question': 'Male or Female', 'answers': ['M', 'F']}]},
+    'add_ons': [{'name': 'VIP Tickets', 'price': 2000}, {'name': 'Laptop Rental', 'price': 1500}],
+    'survey_questions': {'survey': [{'type': 'singleChoice', 'question': 'Are you Male or Female?', 'answers': ['M', 'F']},
+                                    {'type': 'multipleChoice', 'question': 'What merch would you like?', 'answers': ['Shirt', 'Bag', 'Charger', 'Hat', 'Sunglasses']},
+                                    {'type': 'freeResponse', 'question': 'What are you looking forward to?'}]},
     'event_tickets': ['T123'],
     'creation_date': '2019-02-20 01:16:21',
     'last_updated': '2019-02-20 01:16:21'
@@ -78,7 +80,7 @@ query = {
     'event_id': 'E001',
     'qr_code': 'QR Code placeholder',
     'is_ticket_redeemed': 0,
-    'add_ons': {},
+    'add_ons': [],
     'survey_questions': {'survey': [{'question': 'Male or Female', 'answers': 'M'}]},
     'creation_date': '2019-02-20 01:16:21'
 }

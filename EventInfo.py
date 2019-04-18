@@ -98,7 +98,7 @@ def createEvent():
         'max_purchase_quantity': request.json['max_purchase_quantity'] if 'max_purchase_quantity' in request.json else 0,
         'max_quantity_available': request.json['max_quantity_available'] if 'max_quantity_available' in request.json else 0,
         'subtotal_price': request.json['subtotal_price'] if 'subtotal_price' in request.json else 0,
-        'add_ons': request.json['add_ons'] if 'add_ons' in request.json else {},
+        'add_ons': request.json['add_ons'] if 'add_ons' in request.json else [],
         'survey_questions': request.json['survey_questions'] if 'survey_questions' in request.json else {},
         'event_tickets': request.json['event_tickets'] if 'event_tickets' in request.json else [],
         'creation_date': datetime.datetime.now(),
@@ -132,7 +132,7 @@ def signUp():
         'event_id': request.json['event_id'],
         'qr_code': request.json['qr_code'] if 'qr_code' in request.json else 'QR Code placeholder',
         'is_ticket_redeemed': 0,
-        'add_ons': request.json['add_ons'] if 'add_ons' in request.json else {},
+        'add_ons': request.json['add_ons'] if 'add_ons' in request.json else [],
         'survey_questions': request.json['survey_questions'] if 'survey_questions' in request.json else {},
         'creation_date': datetime.datetime.now()
     }
