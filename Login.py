@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, Blueprint
 from flask_cors import CORS, cross_origin
 import pymongo
+import datetime
 
 app = Flask(__name__)
 CORS(app)
@@ -67,7 +68,13 @@ def createUser():
         'email': request.json['email'],
         'phone_number': request.json['phone_number'],
         'user_name': request.json['user_name'],
-        'password': request.json['password']
+        'password': request.json['password'],
+        'events_attended': [],
+        'events_not_attended': [],
+        'events_published': [],
+        'events_registered': [],
+        'event_tickets': [],
+        'creation_date': datetime.datetime.now()
     }
     db.user.insert_one(query)
     return jsonify({'response': 'success',
