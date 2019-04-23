@@ -79,3 +79,59 @@ def createUser():
     db.user.insert_one(query)
     return jsonify({'response': 'success',
                     'message': 'User ' + request.json['user_name'] + " has been inserted"}), 201
+
+@bp.route('/foresite/getUserDetails', methods=['POST'])
+def getUserDetails():
+    # Check if user_name is present in request
+    if not request.json or not 'user_name' in request.json :
+        return jsonify({'response': 'fail',
+                        'message': 'User name is not present'}), 201
+    query = {
+        'user_name': request.json['user_name']
+    }
+
+    # Find with query
+    cursor = db.user.find(query)
+
+    results = list(cursor)
+
+    # Converts ObjectId to string
+    for r in results:
+        r['_id'] = str(r['_id'])
+
+    # If match found, then return success
+    if(len(results) == 1):
+        return jsonify({'response': 'success',
+                        'message': 'Query Success',
+                        'results': results[0]}), 201
+    else:
+        return jsonify({'response': 'fail',
+                        'message': 'User name does not exist'}), 201
+
+@bp.route('/foresite/editUserDetails', methods=['POST'])
+def editUserDetails():
+    # Check if user_name is present in request
+    if not request.json or not 'user_name' in request.json :
+        return jsonify({'response': 'fail',
+                        'message': 'User name is not present'}), 201
+    query = {
+        'user_name': request.json['user_name']
+    }
+
+    edit_query = {}
+    if 'first_name' in request.json:
+        edit_query['first_name'] = request.json['first_name']
+    if 'last_name' in request.json:
+        edit_query['last_name'] = request.json['last_name']
+    if 'email' in request.json:
+        edit_query['email'] = request.json['email']
+    if 'phone_number' in request.json:
+        edit_query['phone_number'] = request.json['phone_number']
+    if 'password' in request.json:
+        edit_query['password'] = request.json['password']
+
+    # Find with query
+    db.user.update(query, {'$set': edit_query})
+
+    return jsonify({'response': 'success',
+                    'message': 'Edit Success'}), 201
