@@ -1,73 +1,121 @@
 import EventInfo
 from Main import app
 from flask import request, jsonify, json
+import unittest
 
 detailedID = ''
 
-def createEvent():
-    global detailedID
+class AccountTests(unittest.TestCase):
+    def test_createEvent(self):
+        global detailedID
 
-    query = {
-        'user_name': 'test',
-        'title': 'test'
-    }
+        query = {
+            'user_name': 'test',
+            'title': 'test'
+        }
 
-    response = app.test_client().post(
-        'foresite/createEvent',
-        data=json.dumps(query),
-        content_type='application/json',
-    )
+        response = app.test_client().post(
+            'foresite/createEvent',
+            data=json.dumps(query),
+            content_type='application/json',
+        )
 
-    data = json.loads(response.get_data(as_text=True))
-    detailedID = data['event_id']
-    print(data)
+        data = json.loads(response.get_data(as_text=True))
+        detailedID = data['event_id']
+        self.assertEqual(data['response'], 'success')
 
-def getEventList():
-    query = {}
+    def test_createEvent_fail(self):
+        global detailedID
 
-    response = app.test_client().post(
-        'foresite/getEventList',
-        data=json.dumps(query),
-        content_type='application/json',
-    )
+        query = {
+            'title': 'test'
+        }
 
-    data = json.loads(response.get_data(as_text=True))
+        response = app.test_client().post(
+            'foresite/createEvent',
+            data=json.dumps(query),
+            content_type='application/json',
+        )
 
-    print(data['response'])
+        data = json.loads(response.get_data(as_text=True))
 
-def getEventDetails():
-    query = {
-        'event_id': detailedID
-    }
+        self.assertEqual(data['response'], 'fail')
 
-    response = app.test_client().post(
-        'foresite/getEventDetails',
-        data=json.dumps(query),
-        content_type='application/json',
-    )
+    def test_getEventList(self):
+        query = {}
 
-    data = json.loads(response.get_data(as_text=True))
+        response = app.test_client().post(
+            'foresite/getEventList',
+            data=json.dumps(query),
+            content_type='application/json',
+        )
 
-    print(data)
+        data = json.loads(response.get_data(as_text=True))
 
-def signUp():
-    global detailedID
-    query = {
-        'event_id': detailedID,
-        'user_name': 'test'
-    }
+        self.assertEqual(data['response'], 'success')
 
-    response = app.test_client().post(
-        'foresite/signUp',
-        data=json.dumps(query),
-        content_type='application/json',
-    )
+    def test_getEventDetails(self):
+        query = {
+            'event_id': detailedID
+        }
 
-    data = json.loads(response.get_data(as_text=True))
+        response = app.test_client().post(
+            'foresite/getEventDetails',
+            data=json.dumps(query),
+            content_type='application/json',
+        )
 
-    print(data)
+        data = json.loads(response.get_data(as_text=True))
 
-createEvent()
-getEventDetails()
-getEventList()
-signUp()
+        self.assertEqual(data['response'], 'success')
+
+    def test_getEventDetails_fail(self):
+        query = {
+            'event_id': '12312312'
+        }
+
+        response = app.test_client().post(
+            'foresite/getEventDetails',
+            data=json.dumps(query),
+            content_type='application/json',
+        )
+
+        data = json.loads(response.get_data(as_text=True))
+
+        self.assertEqual(data['response'], 'fail')
+
+    def test_signUp(self):
+        global detailedID
+        query = {
+            'event_id': detailedID,
+            'user_name': 'test'
+        }
+
+        response = app.test_client().post(
+            'foresite/signUp',
+            data=json.dumps(query),
+            content_type='application/json',
+        )
+
+        data = json.loads(response.get_data(as_text=True))
+
+        self.assertEqual(data['response'], 'success')
+
+    def test_signUp_fail(self):
+        global detailedID
+        query = {
+            'user_name': 'test'
+        }
+
+        response = app.test_client().post(
+            'foresite/signUp',
+            data=json.dumps(query),
+            content_type='application/json',
+        )
+
+        data = json.loads(response.get_data(as_text=True))
+
+        self.assertEqual(data['response'], 'fail')
+
+if __name__ == '__main__':
+    unittest.main()

@@ -77,7 +77,7 @@ def createEvent():
     # Check if user
     if not request.json or not 'user_name' in request.json:
         return jsonify({'response': 'fail',
-                        'message': 'user_id not present'}), 201
+                        'message': 'user_name not present'}), 201
 
     query = {
         'event_id': request.json['event_id'] if 'event_id' in request.json else 'TEMP',
