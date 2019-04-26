@@ -25,5 +25,58 @@ Output:
 {
     "message": "Query Success",
     "response": "success",
-    "results": "{'_id': ObjectId('5c81888789977a2ed87e1d08'), 'event_id': 'E001', 'thumbnail_icon': 'icon placeholder', 'title': 'Santa Clara Tech Conference', 'street': '5001 Great America Pkwy', 'city': 'Santa Clara', 'state': 'CA', 'zip_code': '95054', 'start_time': '13:00', 'end_time': '20:00', 'is_tbd': 0, 'category': 'Technology', 'description': 'The Santa Clara Tech COnference is a tech conference that....', 'max_purchase_quantity': 4, 'max_quantity_available': 500, 'subtotal_price': 4500, 'add_ons': {}, 'survey_questions': {'survey': [{'question': 'Male or Female', 'answers': ['M', 'F']}]}, 'event_tickets': ['T123'], 'creation_date': '2019-02-20 01:16:21', 'last_updated': '2019-02-20 01:16:21'}"
+    "results": "{'_id': ObjectId('5c81888789977a2ed87e1d08'), 'event_id': 'E001', 'thumbnail_icon': 'icon placeholder', 'title': 'Santa Clara Tech Conference', 'street': '5001 Great America Pkwy', 'city': 'Santa Clara', 'state': 'CA', 'zip_code': '95054', 'start_time': '13:00', 'end_time': '20:00', 'is_tbd': 0, 'category': 'Technology', 'description': 'The Santa Clara Tech COnference is a tech conference that....', 'max_purchase_quantity': 4, 'max_quantity_available': 500, 'subtotal_price': 4500, 'add_ons': {}, 'survey_questions': [{'question': 'Male or Female', 'answers': ['M', 'F']}], 'event_tickets': ['T123'], 'creation_date': '2019-02-20 01:16:21', 'last_updated': '2019-02-20 01:16:21'}"
+}
+
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+http://127.0.0.1:5000/foresite/signUp
+signUp() - use when registering for event
+Sample input:
+{
+    "event_id":"5cc262065e946c2650290e95",
+    "user_name":"ctarng",
+    "amount_bought": 5,
+    "qr_code":"temp_code",
+    "add_ons":[
+                {
+                    "name": "VIP Tickets",
+                    "price": 2000,
+                    "amountBought": 2
+                },
+                {
+                    "name": "Laptop Rental",
+                    "price": 1500,
+                    "amountBought": 1
+                }
+            ],
+    "survey_questions":[
+                {
+                    "answers": "M",
+                    "question": "Are you Male or Female?",
+                    "type": "singleChoice"
+                },
+                {
+                    "answers": [
+                        "Shirt",
+                        "Hat",
+                        "Sunglasses"
+                    ],
+                    "question": "What merch would you like?",
+                    "type": "multipleChoice"
+                },
+                {
+                    "answers": "I'm looking forward to free food",
+                    "question": "What are you looking forward to?",
+                    "type": "freeResponse"
+                }
+            ]
+}
+
+Output:
+{
+    "message": "Sign Up Success",
+    "response": "success",
+    "ticket_id": "5cc261835e946c3f183b871f"
 }

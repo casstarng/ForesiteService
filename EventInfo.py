@@ -38,7 +38,11 @@ def getEventList():
             'end_date': r['end_date'],
             'is_tbd': r['is_tbd'],
             'subtotal_price': r['subtotal_price'],
-            'add_ons': r['add_ons']
+            'add_ons': r['add_ons'],
+            'survey_questions': r['survey_questions'],
+            'event_tickets': r['event_tickets'],
+            'creation_date': r['creation_date'],
+            'last_updated': r['last_updated']
         }
         final_res.append(tempobj)
 
@@ -121,7 +125,7 @@ def createEvent():
 @bp.route('/foresite/signUp', methods=['POST'])
 def signUp():
     # Check if event_id present in request
-    if not request.json or not 'event_id' in request.json or not 'user_name' in request.json:
+    if not request.json or not 'event_id' in request.json or not 'user_name' in request.json or not 'amount_bought' in request.json:
         return jsonify({'response': 'fail',
                         'message': 'event_id or user_name not present'}), 201
 
@@ -129,6 +133,7 @@ def signUp():
     query = {
         'ticket_id': request.json['ticket_id'] if 'ticket_id' in request.json else 'TEMP',
         'user_name': request.json['user_name'] if 'user_name' in request.json else '',
+        'amount_bought': request.json['amount_bought'],
         'event_id': request.json['event_id'],
         'qr_code': request.json['qr_code'] if 'qr_code' in request.json else 'QR Code placeholder',
         'is_ticket_redeemed': 0,
