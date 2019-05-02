@@ -72,6 +72,80 @@ for r in results:
 
 print('1 Event has been created')
 
+# Insert event 2
+query = {
+    'event_id': 'TEMP',
+    'user_id': 'U123',
+    'thumbnail_icon': 'https://res.cloudinary.com/dz0okos1w/image/upload/v1555275330/Santa_Clara_U_Seal.svg.png',
+    'title': 'San Jose State University New Orientation date',
+    'street': '2443 Santa Clara St',
+    'city': 'San Jose',
+    'state': 'CA',
+    'zip_code': '95054',
+    'start_time': '13:00',
+    'start_date': '6-12-2019',
+    'end_time': '20:00',
+    'end_date': '6-12-2019',
+    'is_tbd': 0,
+    'category': 'Education',
+    'description': 'San Jose State is hosting a new orientation educational session. This session will involve creating schedules, tours of the campus, and much more. This description will have a lot of text for testing purposes so that Bhargava can test the front end for inconsistencies and stuff like that. Foresite Forever.',
+    'max_purchase_quantity': 4,
+    'max_quantity_available': 500,
+    'subtotal_price': 10000,
+    'add_ons': [],
+    'survey_questions': [],
+    'event_tickets': [],
+    'creation_date': '2019-02-20 01:16:21',
+    'last_updated': '2019-02-20 01:16:21'
+}
+
+db.event.insert_one(query)
+
+results = db.event.find({'event_id': 'TEMP'})
+
+for r in results:
+    r['event_id'] = str(r['_id'])
+    db.event.update({'event_id': 'TEMP'}, r)
+
+print('2 Event has been created')
+
+# Insert event 3
+query = {
+    'event_id': 'TEMP',
+    'user_id': 'U123',
+    'thumbnail_icon': 'https://res.cloudinary.com/dz0okos1w/image/upload/v1555275330/Santa_Clara_U_Seal.svg.png',
+    'title': 'Google Cloud Conference',
+    'street': '5001 Great America Pkwy',
+    'city': 'Santa Clara',
+    'state': 'CA',
+    'zip_code': '95054',
+    'start_time': '13:00',
+    'start_date': '4-16-2019',
+    'end_time': '20:00',
+    'end_date': '4-16-2019',
+    'is_tbd': 0,
+    'category': 'Technology',
+    'description': 'Google Cloud is hosting a free session. Come for free stuff.',
+    'max_purchase_quantity': 4,
+    'max_quantity_available': 500,
+    'subtotal_price': 0,
+    'add_ons': [],
+    'survey_questions': [{'type': 'singleChoice', 'question': 'Are you Male or Female?', 'answers': ['M', 'F']}],
+    'event_tickets': ['T123'],
+    'creation_date': '2019-02-20 01:16:21',
+    'last_updated': '2019-02-20 01:16:21'
+}
+
+db.event.insert_one(query)
+
+results = db.event.find({'event_id': 'TEMP'})
+
+for r in results:
+    r['event_id'] = str(r['_id'])
+    db.event.update({'event_id': 'TEMP'}, r)
+
+print('3 Event has been created')
+
 # Insert event_ticket
 query = {
     'ticket_id': 'T123',
