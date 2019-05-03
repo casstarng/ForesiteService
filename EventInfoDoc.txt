@@ -53,15 +53,17 @@ Sample input:
             ],
     "survey_questions":[
                 {
-                    "answers": "M",
+                    "answers": [{"M": 1}, {"F": 0}],
                     "question": "Are you Male or Female?",
                     "type": "singleChoice"
                 },
                 {
                     "answers": [
-                        "Shirt",
-                        "Hat",
-                        "Sunglasses"
+                        {"Shirt": 1},
+                        {"Bag": 0},
+                        {"Sunglasses": 1},
+                        {"Charger": 0},
+                        {"Hat": 1}
                     ],
                     "question": "What merch would you like?",
                     "type": "multipleChoice"

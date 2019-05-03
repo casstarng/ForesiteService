@@ -193,9 +193,14 @@ def signUp():
             num = event['attendance_prediction'] + request.json['amount_bought']
             survey_prediction = event['survey_prediction']
             for survey in survey_prediction:
-                for a in survey['answers']:
-                    for key in a:
-                        a[key] = a[key] + findPredictionVal(request.json['survey_questions'], survey['question'], key)
+                if survey['type'] == 'singleChoice' or survey['type'] == 'multipleChoice':
+                    for a in survey['answers']:
+                        for key in a:
+                            test = findPredictionVal(request.json['survey_questions'], survey['question'], key)
+                            print(test)
+                            a[key] = a[key] + findPredictionVal(request.json['survey_questions'], survey['question'], key)
+                elif survey['type'] == 'freeResponse':
+                    survey['answers'].append(findPredictionVal(request.json['survey_questions'], survey['question'], ""))
             db.event.update({'event_id': request.json['event_id']}, {'$set': {'attendance_prediction': num, 'survey_prediction': survey_prediction}})
 
 
@@ -208,8 +213,12 @@ def signUp():
 def findPredictionVal(event, question, answer):
     for survey in event:
         if survey['question'] == question:
-            for a in survey['answers']:
-                for key in a:
-                    return a[key]
+            if survey['type'] == 'freeResponse':
+                return survey['answers']
+            else:
+                for a in survey['answers']:
+                    for key in a:
+                        if key == answer:
+                            return int(a[key])
 
 
