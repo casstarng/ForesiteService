@@ -74,6 +74,7 @@ def createUser():
         'events_published': [],
         'events_registered': [],
         'event_tickets': [],
+        'attendance_history': [],
         'creation_date': datetime.datetime.now()
     }
     db.user.insert_one(query)

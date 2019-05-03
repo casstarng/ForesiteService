@@ -26,6 +26,7 @@ query = {
     'events_published': [''],
     'events_registered': ['E001'],
     'event_tickets': ['T123'],
+    'attendance_history': [0, 1, 1, 0, 1, 1, 1],
     'creation_date': '2019-02-20 01:16:21',
     'password': 'tempPassword'
 }
@@ -58,6 +59,10 @@ query = {
                             {'type': 'multipleChoice', 'question': 'What merch would you like?', 'answers': ['Shirt', 'Bag', 'Charger', 'Hat', 'Sunglasses']},
                             {'type': 'freeResponse', 'question': 'What are you looking forward to?'}],
     'event_tickets': ['T123'],
+    'attendance_prediction': 20,
+    'survey_prediction': [{'type': 'singleChoice', 'question': 'Are you Male or Female?', 'answers': [{'M': 12}, {'F': 8}]},
+                            {'type': 'multipleChoice', 'question': 'What merch would you like?', 'answers': [{'Shirt': 19}, {'Bag': 10}, {'Charger': 2}, {'Hat': 20}, {'Sunglasses': 5}]},
+                            {'type': 'freeResponse', 'question': 'What are you looking forward to?', 'answers': ['Everything', 'Nothing', 'I am looking forward to free stuff']}],
     'creation_date': '2019-02-20 01:16:21',
     'last_updated': '2019-02-20 01:16:21'
 }
@@ -95,6 +100,13 @@ query = {
     'add_ons': [],
     'survey_questions': [],
     'event_tickets': [],
+    'attendance_prediction': 0,
+    'survey_prediction': [
+        {'type': 'singleChoice', 'question': 'Are you Male or Female?', 'answers': [{'M': 0}, {'F': 0}]},
+        {'type': 'multipleChoice', 'question': 'What merch would you like?',
+         'answers': [{'Shirt': 0}, {'Bag': 0}, {'Charger': 0}, {'Hat': 0}, {'Sunglasses': 0}]},
+        {'type': 'freeResponse', 'question': 'What are you looking forward to?',
+         'answers': ['Everything', 'Nothing', 'I am looking forward to free stuff']}],
     'creation_date': '2019-02-20 01:16:21',
     'last_updated': '2019-02-20 01:16:21'
 }
@@ -132,6 +144,9 @@ query = {
     'add_ons': [],
     'survey_questions': [{'type': 'singleChoice', 'question': 'Are you Male or Female?', 'answers': ['M', 'F']}],
     'event_tickets': ['T123'],
+    'attendance_prediction': 43,
+    'survey_prediction': [
+        {'type': 'singleChoice', 'question': 'Are you Male or Female?', 'answers': [{'M': 31}, {'F': 12}]}],
     'creation_date': '2019-02-20 01:16:21',
     'last_updated': '2019-02-20 01:16:21'
 }

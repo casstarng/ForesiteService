@@ -83,6 +83,18 @@ def createEvent():
         return jsonify({'response': 'fail',
                         'message': 'user_name not present'}), 201
 
+    survey_prediction = []
+    if 'survey_questions' in request.json:
+        survey_prediction = request.json['survey_questions']
+        for survey in survey_prediction:
+            if survey['type'] == 'singleChoice' or survey['type'] == 'multipleChoice':
+                new_answers = []
+                for a in survey['answers']:
+                    new_answers.append({a: 0})
+                survey['answers'] = new_answers
+            elif survey['type'] == 'freeResponse':
+                survey['answers'] = []
+
     query = {
         'event_id': request.json['event_id'] if 'event_id' in request.json else 'TEMP',
         'user_name': request.json['user_name'] if 'user_name' in request.json else '',
@@ -105,6 +117,8 @@ def createEvent():
         'add_ons': request.json['add_ons'] if 'add_ons' in request.json else [],
         'survey_questions': request.json['survey_questions'] if 'survey_questions' in request.json else {},
         'event_tickets': request.json['event_tickets'] if 'event_tickets' in request.json else [],
+        'attendance_prediction': 0,
+        'survey_prediction': survey_prediction,
         'creation_date': datetime.datetime.now(),
         'last_updated': datetime.datetime.now()
 

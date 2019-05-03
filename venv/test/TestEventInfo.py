@@ -88,7 +88,8 @@ class AccountTests(unittest.TestCase):
         global detailedID
         query = {
             'event_id': detailedID,
-            'user_name': 'test'
+            'user_name': 'test',
+            'amount_bought': 2
         }
 
         response = app.test_client().post(
