@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, Blueprint
 from flask_cors import CORS, cross_origin
 import datetime
 import pymongo
+from NBPattern import prediction
 
 app = Flask(__name__)
 CORS(app)
@@ -183,9 +184,32 @@ def signUp():
 
     db.event.update({'event_id': request.json['event_id']}, {'$set': {'event_tickets': event_tickets}})
 
+    # Machine Learning Prediction
+    # print(user['attendance_history'])
+    history = user['attendance_history']
+    if len(history) > 0:
+        will_attend = prediction(user['attendance_history'])
+        if will_attend >= 0.5:
+            num = event['attendance_prediction'] + request.json['amount_bought']
+            survey_prediction = event['survey_prediction']
+            for survey in survey_prediction:
+                for a in survey['answers']:
+                    for key in a:
+                        a[key] = a[key] + findPredictionVal(request.json['survey_questions'], survey['question'], key)
+            db.event.update({'event_id': request.json['event_id']}, {'$set': {'attendance_prediction': num, 'survey_prediction': survey_prediction}})
+
 
     return jsonify({'response': 'success',
                     'message': 'Sign Up Success',
                     'ticket_id': ticket_id}
                    ), 201
+
+
+def findPredictionVal(event, question, answer):
+    for survey in event:
+        if survey['question'] == question:
+            for a in survey['answers']:
+                for key in a:
+                    return a[key]
+
 

@@ -88,7 +88,7 @@ class AccountTests(unittest.TestCase):
         global detailedID
         query = {
             'event_id': detailedID,
-            'user_name': 'test',
+            'user_name': 'ctarng',
             'amount_bought': 2
         }
 
