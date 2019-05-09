@@ -37,7 +37,7 @@ print('1 User has been created')
 # Insert event
 query = {
     'event_id': 'TEMP',
-    'user_id': 'U123',
+    'user_name': 'ctarng',
     'thumbnail_icon': 'https://res.cloudinary.com/dz0okos1w/image/upload/v1555275330/Santa_Clara_U_Seal.svg.png',
     'title': 'Santa Clara Tech Conference',
     'street': '5001 Great America Pkwy',
@@ -80,7 +80,7 @@ print('1 Event has been created')
 # Insert event 2
 query = {
     'event_id': 'TEMP',
-    'user_id': 'U123',
+    'user_name': 'ctarng',
     'thumbnail_icon': 'https://res.cloudinary.com/dz0okos1w/image/upload/v1555275330/Santa_Clara_U_Seal.svg.png',
     'title': 'San Jose State University New Orientation date',
     'street': '2443 Santa Clara St',
@@ -124,7 +124,7 @@ print('2 Event has been created')
 # Insert event 3
 query = {
     'event_id': 'TEMP',
-    'user_id': 'U123',
+    'user_name': 'ctarng',
     'thumbnail_icon': 'https://res.cloudinary.com/dz0okos1w/image/upload/v1555275330/Santa_Clara_U_Seal.svg.png',
     'title': 'Google Cloud Conference',
     'street': '5001 Great America Pkwy',

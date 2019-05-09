@@ -33,3 +33,16 @@ Output:
     "message": "User ctarng2 has been inserted",
     "response": "success"
 }
+
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+http://localhost:5000/foresite/getUserCreatedEvents
+getUserCreatedEvents() - use when getting list of events that the user has created
+Sample input:
+{
+    "user_name": "ctarng"
+}
+
+Output:
+This output will be long, it's basically an array of event objects

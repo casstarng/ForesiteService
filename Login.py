@@ -136,3 +136,26 @@ def editUserDetails():
 
     return jsonify({'response': 'success',
                     'message': 'Edit Success'}), 201
+
+@bp.route('/foresite/getUserCreatedEvents', methods=['POST'])
+def getUserCreatedEvents():
+    # Check if user_name is present in request
+    if not request.json or not 'user_name' in request.json :
+        return jsonify({'response': 'fail',
+                        'message': 'User name is not present'}), 201
+    query = {
+        'user_name': request.json['user_name']
+    }
+
+    # Find with query
+    cursor = db.event.find(query)
+
+    results = list(cursor)
+
+    # Converts ObjectId to string
+    for r in results:
+        r['_id'] = str(r['_id'])
+
+    return jsonify({'response': 'success',
+                    'message': 'Query Success',
+                    'results': results}), 201
