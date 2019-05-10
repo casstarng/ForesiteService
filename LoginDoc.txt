@@ -45,4 +45,21 @@ Sample input:
 }
 
 Output:
-This output will be long, it's basically an array of event objects
+{
+    "message": "Query Success",
+    "response": "success",
+    "results": [
+        {
+            "event_id": "5cd4c4bb5e946c2134b9dec0",
+            "title": "Santa Clara Tech Conference"
+        },
+        {
+            "event_id": "5cd4c4bb5e946c2134b9dec1",
+            "title": "San Jose State University New Orientation date"
+        },
+        {
+            "event_id": "5cd4c4bb5e946c2134b9dec2",
+            "title": "Google Cloud Conference"
+        }
+    ]
+}

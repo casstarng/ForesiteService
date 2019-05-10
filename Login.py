@@ -152,10 +152,16 @@ def getUserCreatedEvents():
 
     results = list(cursor)
 
+    listOfEvents = []
+
     # Converts ObjectId to string
     for r in results:
-        r['_id'] = str(r['_id'])
+        tempObj = {
+            'event_id': r['event_id'],
+            'title': r['title']
+        }
+        listOfEvents.append(tempObj)
 
     return jsonify({'response': 'success',
                     'message': 'Query Success',
-                    'results': results}), 201
+                    'results': listOfEvents}), 201
