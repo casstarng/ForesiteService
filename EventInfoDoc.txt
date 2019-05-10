@@ -43,12 +43,12 @@ Sample input:
                 {
                     "name": "VIP Tickets",
                     "price": 2000,
-                    "amountBought": 2
+                    "count": 2
                 },
                 {
                     "name": "Laptop Rental",
                     "price": 1500,
-                    "amountBought": 1
+                    "count": 1
                 }
             ],
     "survey_questions":[
