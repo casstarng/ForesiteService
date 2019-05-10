@@ -96,9 +96,11 @@ def createEvent():
             elif survey['type'] == 'freeResponse':
                 survey['answers'] = []
 
-    add_ons = request.json['add_ons']
-    for adds in add_ons:
-        adds['count'] = 0
+    add_ons = []
+    if 'add_ons' in request.json:
+        add_ons = request.json['add_ons']
+        for adds in add_ons:
+            adds['count'] = 0
 
     query = {
         'event_id': request.json['event_id'] if 'event_id' in request.json else 'TEMP',
