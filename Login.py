@@ -140,7 +140,7 @@ def editUserDetails():
 @bp.route('/foresite/getUserCreatedEvents', methods=['POST'])
 def getUserCreatedEvents():
     # Check if user_name is present in request
-    if not request.json or not 'user_name' in request.json :
+    if not request.json or not 'user_name' in request.json:
         return jsonify({'response': 'fail',
                         'message': 'User name is not present'}), 201
     query = {
