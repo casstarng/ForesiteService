@@ -54,7 +54,7 @@ query = {
     'max_purchase_quantity': 4,
     'max_quantity_available': 500,
     'subtotal_price': 4500,
-    'add_ons': [{'name': 'VIP Tickets', 'price': 2000, 'count': 0}, {'name': 'Laptop Rental', 'price': 1500, 'count': 0}],
+    'add_ons': [{'name': 'VIP Tickets', 'price': 2000, 'quantity': 0}, {'name': 'Laptop Rental', 'price': 1500, 'quantity': 0}],
     'survey_questions': [{'type': 'singleChoice', 'question': 'Are you Male or Female?', 'answers': ['M', 'F']},
                             {'type': 'multipleChoice', 'question': 'What merch would you like?', 'answers': ['Shirt', 'Bag', 'Charger', 'Hat', 'Sunglasses']},
                             {'type': 'freeResponse', 'question': 'What are you looking forward to?'}],

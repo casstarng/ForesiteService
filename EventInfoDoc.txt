@@ -35,45 +35,46 @@ http://127.0.0.1:5000/foresite/signUp
 signUp() - use when registering for event
 Sample input:
 {
-    "event_id":"5cc262065e946c2650290e95",
-    "user_name":"ctarng",
-    "amount_bought": 5,
-    "qr_code":"temp_code",
-    "add_ons":[
-                {
-                    "name": "VIP Tickets",
-                    "price": 2000,
-                    "count": 2
-                },
-                {
-                    "name": "Laptop Rental",
-                    "price": 1500,
-                    "count": 1
-                }
-            ],
-    "survey_questions":[
-                {
-                    "answers": [{"M": 1}, {"F": 0}],
-                    "question": "Are you Male or Female?",
-                    "type": "singleChoice"
-                },
-                {
-                    "answers": [
-                        {"Shirt": 1},
-                        {"Bag": 0},
-                        {"Sunglasses": 1},
-                        {"Charger": 0},
-                        {"Hat": 1}
-                    ],
-                    "question": "What merch would you like?",
-                    "type": "multipleChoice"
-                },
-                {
-                    "answers": "I'm looking forward to free food",
-                    "question": "What are you looking forward to?",
-                    "type": "freeResponse"
-                }
-            ]
+	"event_id": "5cc262065e946c2650290e95",
+	"user_name": "ctarng",
+	"amount_bought": 5,
+	"qr_code": "temp_code",
+	"add_ons": [{
+			"name": "VIP Tickets",
+			"price": 2000,
+			"quantity": 2
+		},
+		{
+			"name": "Laptop Rental",
+			"price": 1500,
+			"quantity": 1
+		}
+	],
+	"survey_questions": [{
+			"answers": {
+				"M": 1,
+				"F": 0
+			},
+			"question": "Are you Male or Female?",
+			"type": "singleChoice"
+		},
+		{
+			"answers": {
+				"Shirt": 1,
+				"Bag": 0,
+				"Sunglasses": 1,
+				"Charger": 0,
+				"Hat": 1
+			},
+			"question": "What merch would you like?",
+			"type": "multipleChoice"
+		},
+		{
+			"answers": ["I'm looking forward to free food"],
+			"question": "What are you looking forward to?",
+			"type": "freeResponse"
+		}
+	]
 }
 
 Output:
