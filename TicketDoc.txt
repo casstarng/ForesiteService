@@ -1,0 +1,63 @@
+http://127.0.0.1:5000/foresite/getTicketDetails
+getTicketDetails() - use when getting ticket details
+
+Sample input:
+{
+    "ticket_id": "5cde21135e946c3e8c90b9ee"
+}
+
+Output:
+{
+    "message": "Query Success",
+    "response": "success",
+    "results": {
+        "_id": "5cde21135e946c3e8c90b9ee",
+        "add_ons": [
+            {
+                "name": "VIP Tickets",
+                "price": 2000,
+                "quantity": 2
+            },
+            {
+                "name": "Laptop Rental",
+                "price": 1500,
+                "quantity": 1
+            }
+        ],
+        "amount_bought": 5,
+        "creation_date": "Thu, 16 May 2019 19:48:51 GMT",
+        "event_id": "5cde20fd5e946c1a586c1a17",
+        "is_ticket_redeemed": 0,
+        "qr_code": "temp_code",
+        "survey_questions": [
+            {
+                "answers": {
+                    "F": 0,
+                    "M": 1
+                },
+                "question": "Are you Male or Female?",
+                "type": "singleChoice"
+            },
+            {
+                "answers": {
+                    "Bag": 0,
+                    "Charger": 0,
+                    "Hat": 1,
+                    "Shirt": 1,
+                    "Sunglasses": 1
+                },
+                "question": "What merch would you like?",
+                "type": "multipleChoice"
+            },
+            {
+                "answers": [
+                    "I'm looking forward to free food"
+                ],
+                "question": "What are you looking forward to?",
+                "type": "freeResponse"
+            }
+        ],
+        "ticket_id": "5cde21135e946c3e8c90b9ee",
+        "user_name": "ctarng"
+    }
+}
