@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, Blueprint
 from flask_cors import CORS, cross_origin
 import datetime
 import pymongo
+import copy
 from NBPattern import prediction
 
 app = Flask(__name__)
@@ -86,7 +87,7 @@ def createEvent():
 
     survey_prediction = []
     if 'survey_questions' in request.json:
-        survey_prediction = request.json['survey_questions']
+        survey_prediction = copy.deepcopy(request.json['survey_questions'])
         for survey in survey_prediction:
             if survey['type'] == 'singleChoice' or survey['type'] == 'multipleChoice':
                 new_answers = {}
@@ -98,7 +99,7 @@ def createEvent():
 
     add_ons = []
     if 'add_ons' in request.json:
-        add_ons = request.json['add_ons']
+        add_ons = request.json['add_ons'].copy()
         for adds in add_ons:
             adds['quantity'] = 0
 
