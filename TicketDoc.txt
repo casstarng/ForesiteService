@@ -61,3 +61,30 @@ Output:
         "user_name": "ctarng"
     }
 }
+
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+http://127.0.0.1:5000/foresite/getUserTickets
+getUserTickets() - use when getting list of user's tickets
+
+Sample input:
+{
+	"user_name": "ctarng"
+}
+
+Output:
+{
+    "message": "Query Success",
+    "response": "success",
+    "results": [
+        {
+            "ticket_id": "T123",
+            "title": "Santa Clara Tech Conference"
+        },
+        {
+            "ticket_id": "5cde2e1d5e946c3b68132be4",
+            "title": "Santa Clara Tech Conference"
+        }
+    ]
+}

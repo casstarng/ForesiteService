@@ -167,6 +167,7 @@ query = {
     'user_name': 'ctarng',
     'user_id': 'U123',
     'event_id': 'E001',
+    'title': 'Santa Clara Tech Conference',
     'qr_code': 'QR Code placeholder',
     'amount_bought': 2,
     'is_ticket_redeemed': 0,

@@ -151,11 +151,19 @@ def signUp():
         return jsonify({'response': 'fail',
                         'message': 'event_id or user_name not present'}), 201
 
+    # Add onto event
+    query = {
+        'event_id': request.json['event_id']
+    }
+
+    event = db.event.find_one(query)
+
     # Create new Ticket
     query = {
         'ticket_id': request.json['ticket_id'] if 'ticket_id' in request.json else 'TEMP',
         'user_name': request.json['user_name'] if 'user_name' in request.json else '',
         'amount_bought': request.json['amount_bought'],
+        'title': event['title'],
         'event_id': request.json['event_id'],
         'qr_code': request.json['qr_code'] if 'qr_code' in request.json else 'QR Code placeholder',
         'is_ticket_redeemed': 0,

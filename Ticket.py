@@ -37,36 +37,8 @@ def getTicketDetails():
         return jsonify({'response': 'fail',
                         'message': 'Ticket does not exist'}), 201
 
-@bp.route('/foresite/editUserDetails', methods=['POST'])
-def editUserDetails():
-    # Check if user_name is present in request
-    if not request.json or not 'user_name' in request.json :
-        return jsonify({'response': 'fail',
-                        'message': 'User name is not present'}), 201
-    query = {
-        'user_name': request.json['user_name']
-    }
-
-    edit_query = {}
-    if 'first_name' in request.json:
-        edit_query['first_name'] = request.json['first_name']
-    if 'last_name' in request.json:
-        edit_query['last_name'] = request.json['last_name']
-    if 'email' in request.json:
-        edit_query['email'] = request.json['email']
-    if 'phone_number' in request.json:
-        edit_query['phone_number'] = request.json['phone_number']
-    if 'password' in request.json:
-        edit_query['password'] = request.json['password']
-
-    # Find with query
-    db.user.update(query, {'$set': edit_query})
-
-    return jsonify({'response': 'success',
-                    'message': 'Edit Success'}), 201
-
-@bp.route('/foresite/getUserCreatedEvents', methods=['POST'])
-def getUserCreatedEvents():
+@bp.route('/foresite/getUserTickets', methods=['POST'])
+def getUserTickets():
     # Check if user_name is present in request
     if not request.json or not 'user_name' in request.json:
         return jsonify({'response': 'fail',
@@ -76,20 +48,20 @@ def getUserCreatedEvents():
     }
 
     # Find with query
-    cursor = db.event.find(query)
+    cursor = db.ticket.find(query)
 
     results = list(cursor)
 
-    listOfEvents = []
+    listOfTickets = []
 
     # Converts ObjectId to string
     for r in results:
         tempObj = {
-            'event_id': r['event_id'],
+            'ticket_id': r['ticket_id'],
             'title': r['title']
         }
-        listOfEvents.append(tempObj)
+        listOfTickets.append(tempObj)
 
     return jsonify({'response': 'success',
                     'message': 'Query Success',
-                    'results': listOfEvents}), 201
+                    'results': listOfTickets}), 201
