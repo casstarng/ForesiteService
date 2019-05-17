@@ -28,7 +28,7 @@ query = {
     'event_tickets': ['T123'],
     'attendance_history': [0, 1, 1, 0, 1, 1, 1],
     'creation_date': '2019-02-20 01:16:21',
-    'password': 'tempPassword'
+    'password': 'abc'
 }
 
 db.user.insert_one(query)

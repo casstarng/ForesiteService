@@ -90,9 +90,9 @@ def createEvent():
         survey_prediction = copy.deepcopy(request.json['survey_questions'])
         for survey in survey_prediction:
             if survey['type'] == 'singleChoice' or survey['type'] == 'multipleChoice':
-                new_answers = {}
+                new_answers = []
                 for a in survey['answers']:
-                    new_answers[a] = 0
+                    new_answers.append({a: 0})
                 survey['answers'] = new_answers
             elif survey['type'] == 'freeResponse':
                 survey['answers'] = []
@@ -203,11 +203,11 @@ def signUp():
             for survey in survey_prediction:
                 if survey['type'] == 'singleChoice' or survey['type'] == 'multipleChoice':
                     answers = survey['answers']
-                    for k, v in answers.items():
-                        answers[k] = v + findPredictionVal(request.json['survey_questions'], survey['question'], k)
-                    # for a in survey['answers']:
-                    #     for key in a:
-                    #         a[key] = a[key] + findPredictionVal(request.json['survey_questions'], survey['question'], key)
+                    # for k, v in answers.items():
+                    #     answers[k] = v + findPredictionVal(request.json['survey_questions'], survey['question'], k)
+                    for a in survey['answers']:
+                        for key in a:
+                            a[key] = a[key] + findPredictionVal(request.json['survey_questions'], survey['question'], key)
                 elif survey['type'] == 'freeResponse':
                     newRes = findPredictionVal(request.json['survey_questions'], survey['question'], "")
                     merged = survey['answers'] + newRes
