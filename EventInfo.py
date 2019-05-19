@@ -123,10 +123,13 @@ def createEvent():
         'max_quantity_available': request.json['max_quantity_available'] if 'max_quantity_available' in request.json else 0,
         'subtotal_price': request.json['subtotal_price'] if 'subtotal_price' in request.json else 0,
         'add_ons': add_ons,
+        'add_ons_total': add_ons,
         'survey_questions': request.json['survey_questions'] if 'survey_questions' in request.json else {},
         'event_tickets': request.json['event_tickets'] if 'event_tickets' in request.json else [],
         'attendance_prediction': 0,
+        'attendance_total': 0,
         'survey_prediction': survey_prediction,
+        'survey_prediction_total': survey_prediction,
         'creation_date': datetime.datetime.now(),
         'last_updated': datetime.datetime.now()
 
@@ -210,7 +213,6 @@ def signUp():
             add_ons = event['add_ons']
             for survey in survey_prediction:
                 if survey['type'] == 'singleChoice' or survey['type'] == 'multipleChoice':
-                    answers = survey['answers']
                     # for k, v in answers.items():
                     #     answers[k] = v + findPredictionVal(request.json['survey_questions'], survey['question'], k)
                     for a in survey['answers']:
@@ -225,6 +227,24 @@ def signUp():
                 adds['quantity'] = adds['quantity'] + newCount
             db.event.update({'event_id': request.json['event_id']}, {'$set': {'attendance_prediction': num, 'survey_prediction': survey_prediction, 'add_ons': add_ons}})
 
+    # For adding to total
+    num = event['attendance_total'] + request.json['amount_bought']
+    survey_prediction = event['survey_prediction_total']
+    add_ons = event['add_ons_total']
+    for survey in survey_prediction:
+        if survey['type'] == 'singleChoice' or survey['type'] == 'multipleChoice':
+            for a in survey['answers']:
+                for key in a:
+                    a[key] = a[key] + findPredictionVal(request.json['survey_questions'], survey['question'], key)
+        elif survey['type'] == 'freeResponse':
+            newRes = findPredictionVal(request.json['survey_questions'], survey['question'], "")
+            merged = survey['answers'] + newRes
+            survey['answers'] = merged
+    for adds in add_ons:
+        newCount = findAddOns(request.json['add_ons'], adds['name'])
+        adds['quantity'] = adds['quantity'] + newCount
+    db.event.update({'event_id': request.json['event_id']}, {
+        '$set': {'attendance_prediction_total': num, 'survey_prediction_total': survey_prediction, 'add_ons_total': add_ons}})
 
     return jsonify({'response': 'success',
                     'message': 'Sign Up Success',
