@@ -199,7 +199,7 @@ query = {
     'is_ticket_redeemed': 0,
     'add_ons': [],
     'survey_questions': {'survey': [{'question': 'Male or Female', 'answers': 'M'}]},
-    'creation_date': '2019-02-20 01:16:21'
+    'creation_date': 'Tue, 21 May 2019 11:42:20 GMT'
 }
 
 db.ticket.insert_one(query)
