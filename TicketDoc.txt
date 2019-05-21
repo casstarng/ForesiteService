@@ -11,56 +11,36 @@ Output:
     "message": "Query Success",
     "response": "success",
     "results": {
-        "_id": "5cde21135e946c3e8c90b9ee",
-        "add_ons": [
-            {
-                "name": "VIP Tickets",
-                "price": 2000,
-                "quantity": 2
-            },
-            {
-                "name": "Laptop Rental",
-                "price": 1500,
-                "quantity": 1
-            }
-        ],
-        "amount_bought": 5,
-        "creation_date": "Thu, 16 May 2019 19:48:51 GMT",
-        "event_id": "5cde20fd5e946c1a586c1a17",
+        "_id": "5ce4466589977af7fcd36af7",
+        "add_ons": [],
+        "amount_bought": 2,
+        "city": "Santa Clara",
+        "creation_date": "2019-02-20 01:16:21",
+        "end_date": "4-12-2019",
+        "end_time": "20:00",
+        "event_id": "E001",
         "is_ticket_redeemed": 0,
-        "qr_code": "temp_code",
-        "survey_questions": [
-            {
-                "answers": {
-                    "F": 0,
-                    "M": 1
-                },
-                "question": "Are you Male or Female?",
-                "type": "singleChoice"
-            },
-            {
-                "answers": {
-                    "Bag": 0,
-                    "Charger": 0,
-                    "Hat": 1,
-                    "Shirt": 1,
-                    "Sunglasses": 1
-                },
-                "question": "What merch would you like?",
-                "type": "multipleChoice"
-            },
-            {
-                "answers": [
-                    "I'm looking forward to free food"
-                ],
-                "question": "What are you looking forward to?",
-                "type": "freeResponse"
-            }
-        ],
-        "ticket_id": "5cde21135e946c3e8c90b9ee",
-        "user_name": "ctarng"
+        "qr_code": "QR Code placeholder",
+        "start_date": "4-12-2019",
+        "start_time": "13:00",
+        "state": "CA",
+        "street": "5001 Great America Pkwy",
+        "survey_questions": {
+            "survey": [
+                {
+                    "answers": "M",
+                    "question": "Male or Female"
+                }
+            ]
+        },
+        "thumbnail_icon": "https://res.cloudinary.com/dz0okos1w/image/upload/v1555275330/Santa_Clara_U_Seal.svg.png",
+        "ticket_id": "T123",
+        "title": "Santa Clara Tech Conference",
+        "user_id": "U123",
+        "user_name": "ctarng",
+        "zip_code": "95054"
     }
-}
+}}
 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
@@ -79,12 +59,32 @@ Output:
     "response": "success",
     "results": [
         {
+            "city": "Santa Clara",
+            "creation_date": "2019-02-20 01:16:21",
+            "end_date": "4-12-2019",
+            "end_time": "20:00",
+            "start_date": "4-12-2019",
+            "start_time": "13:00",
+            "state": "CA",
+            "street": "5001 Great America Pkwy",
+            "thumbnail_icon": "https://res.cloudinary.com/dz0okos1w/image/upload/v1555275330/Santa_Clara_U_Seal.svg.png",
             "ticket_id": "T123",
-            "title": "Santa Clara Tech Conference"
+            "title": "Santa Clara Tech Conference",
+            "zip_code": "95054"
         },
         {
-            "ticket_id": "5cde2e1d5e946c3b68132be4",
-            "title": "Santa Clara Tech Conference"
+            "city": "Santa Clara",
+            "creation_date": "Tue, 21 May 2019 11:42:20 GMT",
+            "end_date": "4-12-2019",
+            "end_time": "20:00",
+            "start_date": "4-12-2019",
+            "start_time": "13:00",
+            "state": "CA",
+            "street": "5001 Great America Pkwy",
+            "thumbnail_icon": "",
+            "ticket_id": "5ce4468c89977af4f80a9f6c",
+            "title": "Santa Clara Tech Conference",
+            "zip_code": "95054"
         }
     ]
 }
