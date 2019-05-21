@@ -59,6 +59,7 @@ Output:
     "response": "success",
     "results": [
         {
+            "amount_bought": 2,
             "city": "Santa Clara",
             "creation_date": "2019-02-20 01:16:21",
             "end_date": "4-12-2019",
@@ -73,6 +74,7 @@ Output:
             "zip_code": "95054"
         },
         {
+            "amount_bought": 5,
             "city": "Santa Clara",
             "creation_date": "Tue, 21 May 2019 11:42:20 GMT",
             "end_date": "4-12-2019",

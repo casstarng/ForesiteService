@@ -64,6 +64,7 @@ def getUserTickets():
             'city': r['city'],
             'state': r['state'],
             'zip_code': r['zip_code'],
+            'amount_bought': r['amount_bought'],
             'start_time': r['start_time'],
             'start_date': r['start_date'],
             'end_time': r['end_time'],
