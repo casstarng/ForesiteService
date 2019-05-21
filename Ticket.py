@@ -58,7 +58,17 @@ def getUserTickets():
     for r in results:
         tempObj = {
             'ticket_id': r['ticket_id'],
-            'title': r['title']
+            'title': r['title'],
+            'thumbnail_icon': r['thumbnail_icon'],
+            'street': r['street'],
+            'city': r['city'],
+            'state': r['state'],
+            'zip_code': r['zip_code'],
+            'start_time': r['start_time'],
+            'start_date': r['start_date'],
+            'end_time': r['end_time'],
+            'end_date': r['end_date'],
+            'creation_date': r['creation_date']
         }
         listOfTickets.append(tempObj)
 
