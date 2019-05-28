@@ -108,3 +108,30 @@ Output:
     "message": "Checked in",
     "response": "success"
 }
+
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+http://127.0.0.1:5000/foresite/redeemAddOns
+redeemAddOns() - use when redeeming add ons
+
+Sample input:
+{
+    "ticket_id":"5ced88a489977a782c4591fb",
+    "add_ons": [
+            {
+                "name": "VIP Tickets",
+                "quantity": 1
+            },
+            {
+                "name": "Laptop Rental",
+                "quantity": 1
+            }
+        ]
+}
+
+Output:
+{
+    "message": "Add Ons Checked in",
+    "response": "success"
+}

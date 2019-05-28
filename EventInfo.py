@@ -123,6 +123,7 @@ def createEvent():
         'max_quantity_available': request.json['max_quantity_available'] if 'max_quantity_available' in request.json else 0,
         'subtotal_price': request.json['subtotal_price'] if 'subtotal_price' in request.json else 0,
         'add_ons': add_ons,
+        'add_ons_live': add_ons,
         'add_ons_total': add_ons,
         'survey_questions': request.json['survey_questions'] if 'survey_questions' in request.json else {},
         'event_tickets': request.json['event_tickets'] if 'event_tickets' in request.json else [],

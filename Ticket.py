@@ -107,3 +107,56 @@ def redeemTickets():
     return jsonify({'response': 'success',
                     'message': 'Checked in'}), 201
 
+@bp.route('/foresite/redeemAddOns', methods=['POST'])
+def redeemAddOns():
+    # Check if ticket_id is present in request
+    if not request.json or not 'ticket_id' in request.json or not 'add_ons' in request.json:
+        return jsonify({'response': 'fail',
+                        'message': 'Ticket_id is not present'}), 201
+    query = {
+        'ticket_id': request.json['ticket_id']
+    }
+
+    # Find with query
+    ticket_res = db.ticket.find_one(query)
+    event_id = ticket_res['event_id']
+    res_add_ons = ticket_res['add_ons']
+
+    for add in res_add_ons:
+        num = add['quantity'] - findAddOns(request.json['add_ons'], add['name'])
+        if num < 0:
+            return jsonify({'response': 'error',
+                            'message': 'Invalid add-on amount'}), 201
+        add['quantity'] = num
+
+    db.ticket.update({'ticket_id': request.json['ticket_id']}, {'$set': {'add_ons': res_add_ons}})
+
+    # event update
+
+    query = {
+        'event_id': event_id
+    }
+
+    # Find with query
+    event_res = db.event.find_one(query)
+
+    event_add_ons = event_res['add_ons_live']
+
+    for add in event_add_ons:
+        num = add['quantity'] + findAddOns(request.json['add_ons'], add['name'])
+        if num < 0:
+            return jsonify({'response': 'error',
+                            'message': 'Invalid add-on amount'}), 201
+        add['quantity'] = num
+
+    db.event.update({'event_id': event_id}, {'$set': {'add_ons_live': event_add_ons}})
+
+    return jsonify({'response': 'success',
+                    'message': 'Add Ons Checked in'}), 201
+
+def findAddOns(request_add_ons, name):
+    for adds in request_add_ons:
+        if adds['name'] == name:
+            return int(adds['quantity'])
+    return 0
+
