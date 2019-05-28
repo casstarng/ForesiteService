@@ -128,6 +128,7 @@ def createEvent():
         'event_tickets': request.json['event_tickets'] if 'event_tickets' in request.json else [],
         'attendance_prediction': 0,
         'attendance_total': 0,
+        'attendance_live': 0,
         'survey_prediction': survey_prediction,
         'survey_prediction_total': survey_prediction,
         'creation_date': datetime.datetime.now(),
@@ -178,7 +179,7 @@ def signUp():
         'end_date': event['end_date'],
         'event_id': request.json['event_id'],
         'qr_code': request.json['qr_code'] if 'qr_code' in request.json else 'QR Code placeholder',
-        'is_ticket_redeemed': 0,
+        'tickets_redeemed': 0,
         'add_ons': request.json['add_ons'] if 'add_ons' in request.json else [],
         'survey_questions': request.json['survey_questions'] if 'survey_questions' in request.json else {},
         'creation_date': datetime.datetime.now()

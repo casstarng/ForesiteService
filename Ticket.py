@@ -76,3 +76,34 @@ def getUserTickets():
     return jsonify({'response': 'success',
                     'message': 'Query Success',
                     'results': listOfTickets}), 201
+
+@bp.route('/foresite/redeemTickets', methods=['POST'])
+def redeemTickets():
+    # Check if ticket_id is present in request
+    if not request.json or not 'ticket_id' in request.json or not 'tickets_redeemed' in request.json:
+        return jsonify({'response': 'fail',
+                        'message': 'Ticket_id is not present'}), 201
+    query = {
+        'ticket_id': request.json['ticket_id']
+    }
+
+    # Find with query
+    result = db.ticket.find_one(query)
+
+    # Converts ObjectId to string
+    result['_id'] = str(result['_id'])
+    event_id = result['event_id']
+
+    db.ticket.update({'ticket_id': request.json['ticket_id']}, {'$set': {'tickets_redeemed': result['tickets_redeemed'] + request.json['tickets_redeemed']}})
+
+    query = {
+        'event_id': event_id
+    }
+
+    event_result = db.event.find_one(query)
+
+    db.event.update({'event_id': event_id}, {'$set': {'attendance_live': event_result['attendance_live'] + request.json['tickets_redeemed']}})
+
+    return jsonify({'response': 'success',
+                    'message': 'Checked in'}), 201
+

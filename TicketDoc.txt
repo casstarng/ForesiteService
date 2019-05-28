@@ -90,3 +90,21 @@ Output:
         }
     ]
 }
+
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+http://127.0.0.1:5000/foresite/redeemTickets
+redeemTickets() - use when redeeming tickets on QR code
+
+Sample input:
+{
+    "ticket_id":"5ced7e2689977a72944da253",
+    "tickets_redeemed": 2
+}
+
+Output:
+{
+    "message": "Checked in",
+    "response": "success"
+}

@@ -62,6 +62,7 @@ query = {
     'event_tickets': ['T123'],
     'attendance_prediction': 20,
     'attendance_total': 25,
+    'attendance_live': 0,
     'survey_prediction': [{'type': 'singleChoice', 'question': 'Are you Male or Female?', 'answers': [{'M': 12}, {'F': 8}]},
                             {'type': 'multipleChoice', 'question': 'What merch would you like?', 'answers': [{'Shirt': 19}, {'Bag': 10}, {'Charger': 2}, {'Hat': 20}, {'Sunglasses': 5}]},
                             {'type': 'freeResponse', 'question': 'What are you looking forward to?', 'answers': ['Everything', 'Nothing', 'I am looking forward to free stuff']}],
@@ -108,6 +109,7 @@ query = {
     'event_tickets': [],
     'attendance_prediction': 0,
     'attendance_total': 0,
+    'attendance_live': 0,
     'survey_prediction': [
         {'type': 'singleChoice', 'question': 'Are you Male or Female?', 'answers': [{'M': 0}, {'F': 0}]},
         {'type': 'multipleChoice', 'question': 'What merch would you like?',
@@ -160,6 +162,7 @@ query = {
     'event_tickets': ['T123'],
     'attendance_prediction': 43,
     'attendance_total': 50,
+    'attendance_live': 0,
     'survey_prediction': [
         {'type': 'singleChoice', 'question': 'Are you Male or Female?', 'answers': [{'M': 31}, {'F': 12}]}],
     'survey_prediction_total': [
@@ -196,7 +199,7 @@ query = {
     'end_date': '4-12-2019',
     'qr_code': 'QR Code placeholder',
     'amount_bought': 2,
-    'is_ticket_redeemed': 0,
+    'tickets_redeemed': 0,
     'add_ons': [],
     'survey_questions': {'survey': [{'question': 'Male or Female', 'answers': 'M'}]},
     'creation_date': 'Tue, 21 May 2019 11:42:20 GMT'
