@@ -93,6 +93,11 @@ def redeemTickets():
     # Converts ObjectId to string
     result['_id'] = str(result['_id'])
     event_id = result['event_id']
+    amount_bought = result['amount_bought']
+    tickets_redeemed = result['tickets_redeemed']
+    if tickets_redeemed + request.json['tickets_redeemed'] > amount_bought:
+        return jsonify({'response': 'error',
+                        'message': 'Invalid redemption amount'}), 201
 
     db.ticket.update({'ticket_id': request.json['ticket_id']}, {'$set': {'tickets_redeemed': result['tickets_redeemed'] + request.json['tickets_redeemed']}})
 
