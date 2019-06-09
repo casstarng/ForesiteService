@@ -34,6 +34,28 @@ query = {
 db.user.insert_one(query)
 print('1 User has been created')
 
+
+# Insert user
+query = {
+    'user_id': 'U124',
+    'user_name': 'bgava',
+    'first_name': 'Bhargava',
+    'last_name': 'Ramisetty',
+    'email': 'bgava@scu.edu',
+    'phone_number': '4083823992',
+    'events_attended': [''],
+    'events_not_attended': [''],
+    'events_published': [''],
+    'events_registered': [''],
+    'event_tickets': [''],
+    'attendance_history': [0, 1, 0, 0, 0, 0, 0],
+    'creation_date': '2019-02-20 01:16:21',
+    'password': 'abc'
+}
+
+db.user.insert_one(query)
+print('2 User has been created')
+
 # Insert event
 query = {
     'event_id': 'TEMP',
